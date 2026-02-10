@@ -36,8 +36,9 @@
     },
     "toast":
     {
-        "correct": "Correct Answer!",
-        "incorrect": "Incorrect Answer!",
+        "correct": "Great work - your approach paid off!",
+        "incorrect": "Not quite right - try revising your answer!",
+        "recovery": "Nice persistence - your revision worked!",
         "simplify": "Please simplify!",
         "cantProcess": "Our system could not process that answer",
         "stepComplete": "Step Completed!",
