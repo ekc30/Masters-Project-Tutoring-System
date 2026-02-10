@@ -30,6 +30,7 @@
     },
     "hintsystem": 
     {
+        "reflectPrompt": "What do you already know? What do you need to solve the problem?",
         "hint": "Hint ",
         "answer": "Answer",
         "answerIs": "The answer is "
