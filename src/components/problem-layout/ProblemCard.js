@@ -204,14 +204,11 @@ class ProblemCard extends React.Component {
     componentDidMount() {
         // Start an asynchronous task
         this.updateBioInfo();
-        console.log("student show hints status: ", this.showHints);
 
         // Start background timer.
         this.hintTimer = setTimeout(() => {
             this.setState({ hintTimerDone: true });
         }, 5000);
-
-        console.log("student show hints status: ", this.showHints);
     }
 
     componentDidUpdate(prevProps) {
