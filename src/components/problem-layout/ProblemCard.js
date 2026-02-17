@@ -252,6 +252,8 @@ class ProblemCard extends React.Component {
             questionText: stepBody.trim() || stepTitle.trim(),
         });
 
+        const wasPreviouslyIncorrect = !this.state.isCorrect;
+
         const isCorrect = !!correctAnswer;
 
         this.context.firebase.log(
@@ -274,7 +276,7 @@ class ProblemCard extends React.Component {
         );
 
         if (this.showCorrectness) {
-            toastNotifyCorrectness(isCorrect, reason, this.translate);
+            toastNotifyCorrectness(isCorrect, reason, this.translate, wasPreviouslyIncorrect);
         } else {
             toastNotifyCompletion(this.translate);
         }
