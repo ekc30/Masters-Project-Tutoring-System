@@ -146,6 +146,7 @@ class ProblemCard extends React.Component {
             // When we are currently streaming the response from ChatGPT, this variable is `true`
             isGeneratingHint: false, 
             lastAIHintHash: null,
+            hintTimerDone: false,
         };
 
          // This is used for AI hint generation
@@ -204,6 +205,13 @@ class ProblemCard extends React.Component {
         // Start an asynchronous task
         this.updateBioInfo();
         console.log("student show hints status: ", this.showHints);
+
+        // Start background timer.
+        this.hintTimer = setTimeout(() => {
+            this.setState({ hintTimerDone: true });
+        }, 5000);
+
+        console.log("student show hints status: ", this.showHints);
     }
 
     componentDidUpdate(prevProps) {
@@ -217,6 +225,12 @@ class ProblemCard extends React.Component {
                 dynamicHint: "",
             });
             this.updateBioInfo();
+        }
+    }
+
+    componentWillUnmount() {
+        if (this.hintTimer) {
+            clearTimeout(this.hintTimer);
         }
     }
 
@@ -735,6 +749,9 @@ class ProblemCard extends React.Component {
                                         aria-label="delete"
                                         onClick={this.toggleHints}
                                         title="View available hints"
+                                        style={{
+                                            visibility: this.state.hintTimerDone ? "visible" : "hidden"
+                                        }}
                                         disabled={
                                             !this.state.enableHintGeneration
                                         }
