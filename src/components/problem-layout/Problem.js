@@ -472,6 +472,11 @@ class Problem extends React.Component {
                                         this.context
                                     )}
                                 </div>
+                                <div className={classes.problemReflectPrompt}>
+                                    {renderText(
+                                        translate("hintsystem.reflectPrompt"),
+                                    )}
+                                </div>
                             </CardContent>
                         </Card>
                         <Spacer height={8} />

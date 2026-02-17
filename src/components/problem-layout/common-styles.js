@@ -106,6 +106,12 @@ const styles = theme => ({
         fontSize: 20,
         marginTop: 10,
     },
+    problemReflectPrompt: {
+        fontSize: 12,
+        marginTop: 20,
+        fontStyle: "italic",
+        color: "#888",
+    },
     problemStepHeader: {
         fontSize: 25,
         marginTop: 0,
