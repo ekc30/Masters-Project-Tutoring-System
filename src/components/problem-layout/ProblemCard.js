@@ -208,7 +208,7 @@ class ProblemCard extends React.Component {
         // Start background timer.
         this.hintTimer = setTimeout(() => {
             this.setState({ hintTimerDone: true });
-        }, 5000);
+        }, 1000);
     }
 
     componentDidUpdate(prevProps) {

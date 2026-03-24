@@ -643,6 +643,7 @@ class Platform extends React.Component {
         if (mastery >= MASTERY_THRESHOLD) {
             toast.success("You've successfully completed this assignment!", {
                 toastId: ToastID.successfully_completed_lesson.toString(),
+                autoClose: 5000
             });
         }
     };
@@ -719,7 +720,7 @@ class Platform extends React.Component {
                 {this.lesson?.enableCompletionMode && (
                     <div style={{ padding: "10px 20px" }}>
                         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 12 }}>
-                            <span>Progress</span>
+                            <span>Overall Progress</span>
                             <span>{this.getProgressBarData().percent}% ({this.getProgressBarData().completed}/{this.getProgressBarData().total})</span>
                         </div>
                         <LinearProgress
