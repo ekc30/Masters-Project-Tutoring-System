@@ -61,6 +61,7 @@ class LessonSelection extends React.Component {
     removeProgress = () => {
         this.setState({ removedProgress: true });
         this.props.removeProgress();
+        localStorage.removeItem("completedProblems");
     }
 
     prepareRemoveProgress = () => {

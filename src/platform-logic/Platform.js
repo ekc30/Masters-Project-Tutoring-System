@@ -41,7 +41,9 @@ class Platform extends React.Component {
         this.problemIndex = {
             problems: problemPool,
         };
-        this.completedProbs = new Set();
+        const stored = JSON.parse(localStorage.getItem("completedProblems") || "[]");
+        this.completedProbs = new Set(stored);
+
         this.lesson = null;
 
         this.user = context.user || {};
@@ -330,6 +332,10 @@ class Platform extends React.Component {
                 prevCompletedProbs
             );
             this.completedProbs = new Set(prevCompletedProbs);
+            localStorage.setItem(
+                "completedProblems",
+                JSON.stringify([...this.completedProbs])
+            );
         }
         this.setState(
             {
@@ -436,6 +442,10 @@ class Platform extends React.Component {
                 return null;
             } else {
                 this.completedProbs = new Set();
+                localStorage.setItem(
+                    "completedProblems",
+                    JSON.stringify([...this.completedProbs])
+                );
                 chosenProblem = context.heuristic(
                     problems,
                     this.completedProbs
@@ -461,6 +471,10 @@ class Platform extends React.Component {
 
     problemComplete = async (context) => {
         this.completedProbs.add(this.state.currProblem.id);
+        localStorage.setItem(
+            "completedProblems",
+            JSON.stringify([...this.completedProbs])
+        );
         const { setByKey } = this.context.browserStorage;
         await setByKey(
             LESSON_PROGRESS_STORAGE_KEY(this.lesson.id),
