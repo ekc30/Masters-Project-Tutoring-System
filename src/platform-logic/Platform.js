@@ -334,7 +334,7 @@ class Platform extends React.Component {
         this.setState(
             {
                 currProblem: this._nextProblem(
-                    this.context ? this.context : context
+                    this.context ? this.context : context, true
                 ),
             },
             () => {
@@ -351,7 +351,7 @@ class Platform extends React.Component {
         });
     };
 
-    _nextProblem = (context) => {
+    _nextProblem = (context, firstLoad = false) => {
         seed = Date.now().toString();
         this.setState({ seed: seed });
         this.props.saveProgress();
@@ -398,7 +398,13 @@ class Platform extends React.Component {
         console.debug(
             `Platform.js: available problems ${problems.length}, completed problems ${this.completedProbs.size}`
         );
-        chosenProblem = context.heuristic(problems, this.completedProbs);
+        // Load problem selected if first load, otherwise load next problem.
+        if (firstLoad) {
+            chosenProblem = problems.filter((p) => p.id == this.lesson['id'])[0];
+        } else {
+            // chosenProblem = context.heuristic(problems, this.completedProbs);
+            chosenProblem = problems.find(p => !this.completedProbs.has(p.id));
+        }
         console.debug("Platform.js: chosen problem", chosenProblem);
 
         const objectives = Object.keys(this.lesson.learningObjectives);
