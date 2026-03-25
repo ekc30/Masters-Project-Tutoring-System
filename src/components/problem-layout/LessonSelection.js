@@ -19,6 +19,10 @@ import About from '../../pages/Posts/About.js';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import { LocalizationConsumer } from '../../util/LocalizationContext';
 
+const urlParams = new URLSearchParams(window.location.search);
+const SYSTEM_MODE = urlParams.get("mode") || localStorage.getItem("mode") || "control";
+const LESSON_SET = urlParams.get("set") || localStorage.getItem("set") || "1";
+
 class LessonSelection extends React.Component {
     static contextType = ThemeContext;
 
@@ -37,6 +41,9 @@ class LessonSelection extends React.Component {
         //     const defaultLocale = localStorage.getItem('platformLanguage');
         //     setLanguage(defaultLocale)
         // }
+
+        localStorage.setItem("mode", SYSTEM_MODE);
+        localStorage.setItem("set", LESSON_SET);
 
         this.user = context.user || {}
         this.isPrivileged = !!this.user.privileged
@@ -142,7 +149,7 @@ class LessonSelection extends React.Component {
                                                 </center>
                                             </Grid>
                                         )
-                                    : this.coursePlans[this.props.courseNum].lessons.map((lesson, i) => {
+                                    : this.coursePlans[this.props.courseNum].lessons.filter(x => x.lesson_set === LESSON_SET).map((lesson, i) => {
                                         return (
                                             <Grid item xs={12} sm={6} md={4} key={i}>
     <center>

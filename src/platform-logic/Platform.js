@@ -32,11 +32,21 @@ let problemPool = require(`@generated/processed-content-pool/${CONTENT_SOURCE}.j
 let seed = Date.now().toString();
 console.log("Generated seed");
 
+const urlParams = new URLSearchParams(window.location.search);
+const SYSTEM_MODE = urlParams.get("mode") || localStorage.getItem("mode") || "control";
+const LESSON_SET = urlParams.get("set") || localStorage.getItem("set") || "1";
+
 class Platform extends React.Component {
     static contextType = ThemeContext;
 
     constructor(props, context) {
         super(props);
+
+        localStorage.setItem("mode", SYSTEM_MODE);
+        localStorage.setItem("set", LESSON_SET);
+
+        console.log("System version: " + SYSTEM_MODE);
+        console.log("Lesson set: " + LESSON_SET);
         
         this.problemIndex = {
             problems: problemPool,
