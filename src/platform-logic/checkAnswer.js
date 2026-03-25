@@ -174,9 +174,7 @@ function checkAnswer({ attempt, actual, answerType, precision = 5, variabilizati
 
         } else if (answerType === "string") {
             parsed = attempt;
-            //console.log(parsed);
-            //console.log(actual);
-            const correctAnswers = _equality(parsed, actual);
+            const correctAnswers = _equality(parsed.toUpperCase(), actual);
 
             if (correctAnswers.length > 0) {
                 return [parsed, correctAnswers[0], null]
