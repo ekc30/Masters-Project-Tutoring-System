@@ -146,6 +146,7 @@ class ProblemCard extends React.Component {
             // When we are currently streaming the response from ChatGPT, this variable is `true`
             isGeneratingHint: false, 
             lastAIHintHash: null,
+            hintTimerDone: false,
         };
 
          // This is used for AI hint generation
@@ -203,7 +204,11 @@ class ProblemCard extends React.Component {
     componentDidMount() {
         // Start an asynchronous task
         this.updateBioInfo();
-        console.log("student show hints status: ", this.showHints);
+
+        // Start background timer.
+        this.hintTimer = setTimeout(() => {
+            this.setState({ hintTimerDone: true });
+        }, 1000);
     }
 
     componentDidUpdate(prevProps) {
@@ -217,6 +222,12 @@ class ProblemCard extends React.Component {
                 dynamicHint: "",
             });
             this.updateBioInfo();
+        }
+    }
+
+    componentWillUnmount() {
+        if (this.hintTimer) {
+            clearTimeout(this.hintTimer);
         }
     }
 
@@ -273,14 +284,17 @@ class ProblemCard extends React.Component {
             this.state.bioInfo
         );
 
+        let prevCorrect = this.state.prevCorrect === undefined ? true : this.state.prevCorrect;
+
         if (this.showCorrectness) {
-            toastNotifyCorrectness(isCorrect, reason, this.translate);
+            toastNotifyCorrectness(isCorrect, reason, this.translate, !prevCorrect);
         } else {
             toastNotifyCompletion(this.translate);
         }
 
         this.setState({
             isCorrect,
+            prevCorrect: isCorrect,
             checkMarkOpacity: isCorrect ? "100" : "0",
         });
         answerMade(this.index, knowledgeComponents, isCorrect);
@@ -733,6 +747,9 @@ class ProblemCard extends React.Component {
                                         aria-label="delete"
                                         onClick={this.toggleHints}
                                         title="View available hints"
+                                        style={{
+                                            visibility: this.state.hintTimerDone ? "visible" : "hidden"
+                                        }}
                                         disabled={
                                             !this.state.enableHintGeneration
                                         }

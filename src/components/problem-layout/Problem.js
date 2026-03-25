@@ -257,10 +257,14 @@ class Problem extends React.Component {
                     );
                     continue;
                 }
-                if (this.doMasteryUpdate && (firstAttempts[cardIndex] === undefined || firstAttempts[cardIndex] === false)) {
-                    firstAttempts[cardIndex] = true;
-                    update(this.bktParams[kc], isCorrect);
-                }
+                // if (this.doMasteryUpdate && (firstAttempts[cardIndex] === undefined || firstAttempts[cardIndex] === false)) {
+                //     console.log("Updating on first attempt");
+                //     firstAttempts[cardIndex] = true;
+                //     update(this.bktParams[kc], isCorrect);
+                // }
+                
+                // Update regardless of whether first attempt or not.
+                update(this.bktParams[kc], isCorrect);
             }
         }
 
@@ -470,6 +474,11 @@ class Problem extends React.Component {
                                             seed
                                         ),
                                         this.context
+                                    )}
+                                </div>
+                                <div className={classes.problemReflectPrompt}>
+                                    {renderText(
+                                        translate("hintsystem.reflectPrompt"),
                                     )}
                                 </div>
                             </CardContent>

@@ -13,7 +13,7 @@
     },
     "problem":
     {
-        "NextProblem": "Next Problem",
+        "NextProblem": "Save and Continue",
         "PreviousProblem": "Previous Problem",
         "Submit": "Submit",
         "Feedback": "Feedback",
@@ -30,14 +30,16 @@
     },
     "hintsystem": 
     {
+        "reflectPrompt": "What do you already know? What do you need to solve the problem?",
         "hint": "Hint ",
         "answer": "Answer",
         "answerIs": "The answer is "
     },
     "toast":
     {
-        "correct": "Correct Answer!",
-        "incorrect": "Incorrect Answer!",
+        "correct": "Great work - your approach paid off!",
+        "incorrect": "Not quite right - try revising your answer!",
+        "recovery": "Nice persistence - your revision worked!",
         "simplify": "Please simplify!",
         "cantProcess": "Our system could not process that answer",
         "stepComplete": "Step Completed!",

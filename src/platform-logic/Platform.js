@@ -41,7 +41,9 @@ class Platform extends React.Component {
         this.problemIndex = {
             problems: problemPool,
         };
-        this.completedProbs = new Set();
+        const stored = JSON.parse(localStorage.getItem("completedProblems") || "[]");
+        this.completedProbs = new Set(stored);
+
         this.lesson = null;
 
         this.user = context.user || {};
@@ -330,11 +332,15 @@ class Platform extends React.Component {
                 prevCompletedProbs
             );
             this.completedProbs = new Set(prevCompletedProbs);
+            localStorage.setItem(
+                "completedProblems",
+                JSON.stringify([...this.completedProbs])
+            );
         }
         this.setState(
             {
                 currProblem: this._nextProblem(
-                    this.context ? this.context : context
+                    this.context ? this.context : context, true
                 ),
             },
             () => {
@@ -351,7 +357,7 @@ class Platform extends React.Component {
         });
     };
 
-    _nextProblem = (context) => {
+    _nextProblem = (context, firstLoad = false) => {
         seed = Date.now().toString();
         this.setState({ seed: seed });
         this.props.saveProgress();
@@ -398,7 +404,13 @@ class Platform extends React.Component {
         console.debug(
             `Platform.js: available problems ${problems.length}, completed problems ${this.completedProbs.size}`
         );
-        chosenProblem = context.heuristic(problems, this.completedProbs);
+        // Load problem selected if first load, otherwise load next problem.
+        if (firstLoad) {
+            chosenProblem = problems.filter(p => p.id == this.lesson['id'])[0];
+        } else {
+            // chosenProblem = context.heuristic(problems, this.completedProbs);
+            chosenProblem = problems.find(p => !this.completedProbs.has(p.id));
+        }
         console.debug("Platform.js: chosen problem", chosenProblem);
 
         const objectives = Object.keys(this.lesson.learningObjectives);
@@ -430,6 +442,10 @@ class Platform extends React.Component {
                 return null;
             } else {
                 this.completedProbs = new Set();
+                localStorage.setItem(
+                    "completedProblems",
+                    JSON.stringify([...this.completedProbs])
+                );
                 chosenProblem = context.heuristic(
                     problems,
                     this.completedProbs
@@ -455,6 +471,10 @@ class Platform extends React.Component {
 
     problemComplete = async (context) => {
         this.completedProbs.add(this.state.currProblem.id);
+        localStorage.setItem(
+            "completedProblems",
+            JSON.stringify([...this.completedProbs])
+        );
         const { setByKey } = this.context.browserStorage;
         await setByKey(
             LESSON_PROGRESS_STORAGE_KEY(this.lesson.id),
@@ -623,6 +643,7 @@ class Platform extends React.Component {
         if (mastery >= MASTERY_THRESHOLD) {
             toast.success("You've successfully completed this assignment!", {
                 toastId: ToastID.successfully_completed_lesson.toString(),
+                autoClose: 5000
             });
         }
     };
@@ -699,7 +720,7 @@ class Platform extends React.Component {
                 {this.lesson?.enableCompletionMode && (
                     <div style={{ padding: "10px 20px" }}>
                         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 12 }}>
-                            <span>Progress</span>
+                            <span>Overall Progress</span>
                             <span>{this.getProgressBarData().percent}% ({this.getProgressBarData().completed}/{this.getProgressBarData().total})</span>
                         </div>
                         <LinearProgress
