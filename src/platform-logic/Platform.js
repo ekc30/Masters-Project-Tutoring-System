@@ -406,7 +406,7 @@ class Platform extends React.Component {
         );
         // Load problem selected if first load, otherwise load next problem.
         if (firstLoad) {
-            chosenProblem = problems.filter((p) => p.id == this.lesson['id'])[0];
+            chosenProblem = problems.filter(p => p.id == this.lesson['id'])[0];
         } else {
             // chosenProblem = context.heuristic(problems, this.completedProbs);
             chosenProblem = problems.find(p => !this.completedProbs.has(p.id));
