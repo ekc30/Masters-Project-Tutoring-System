@@ -35,6 +35,10 @@ import { cleanArray } from "../../util/cleanObject";
 import Popup from '../Popup/Popup.js';
 import About from '../../pages/Posts/About.js';
 
+const urlParams = new URLSearchParams(window.location.search);
+const SYSTEM_MODE = urlParams.get("mode") || localStorage.getItem("mode") || "control";
+const LESSON_SET = urlParams.get("set") || localStorage.getItem("set") || "1";
+
 class Problem extends React.Component {
     static defaultProps = {
         autoScroll: true
@@ -43,6 +47,12 @@ class Problem extends React.Component {
 
     constructor(props, context) {
         super(props);
+        
+        localStorage.setItem("mode", SYSTEM_MODE);
+        localStorage.setItem("set", LESSON_SET);
+
+        console.log("System version: " + SYSTEM_MODE);
+        console.log("Lesson set: " + LESSON_SET);
 
         // const { setLanguage } = props;
         // if (props.lesson.courseName == "Matematik 4") {
@@ -476,7 +486,7 @@ class Problem extends React.Component {
                                         this.context
                                     )}
                                 </div>
-                                <div className={classes.problemReflectPrompt}>
+                                <div className={classes.problemReflectPrompt} style={{ visibility: SYSTEM_MODE === "enhanced" ? "visible" : "hidden" }}>
                                     {renderText(
                                         translate("hintsystem.reflectPrompt"),
                                     )}

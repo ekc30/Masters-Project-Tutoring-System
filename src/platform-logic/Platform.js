@@ -709,6 +709,7 @@ class Platform extends React.Component {
                                     style={{
                                         textAlign: "right",
                                         paddingTop: "3px",
+                                        visibility: SYSTEM_MODE === "enhanced" ? "visible" : "hidden"
                                     }}
                                 >
                                     {this.state.status !== "courseSelection" &&
@@ -727,7 +728,7 @@ class Platform extends React.Component {
                 </AppBar>
 
                 {/* Progress Bar */}
-                {this.lesson?.enableCompletionMode && (
+                {this.lesson?.enableCompletionMode && SYSTEM_MODE === "enhanced" && (
                     <div style={{ padding: "10px 20px" }}>
                         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 12 }}>
                             <span>Overall Progress</span>

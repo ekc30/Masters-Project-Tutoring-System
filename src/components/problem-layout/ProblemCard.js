@@ -36,12 +36,22 @@ import { joinList } from "../../util/formListString";
 import withTranslation from "../../util/withTranslation.js"
 import CryptoJS from "crypto-js";
 
+const urlParams = new URLSearchParams(window.location.search);
+const SYSTEM_MODE = urlParams.get("mode") || localStorage.getItem("mode") || "control";
+const LESSON_SET = urlParams.get("set") || localStorage.getItem("set") || "1";
+
 class ProblemCard extends React.Component {
     static contextType = ThemeContext;
 
     constructor(props, context) {
         super(props);
         //console.log("problem lesson props:", props);
+
+        localStorage.setItem("mode", SYSTEM_MODE);
+        localStorage.setItem("set", LESSON_SET);
+
+        console.log("System version: " + SYSTEM_MODE);
+        console.log("Lesson set: " + LESSON_SET);
 
         this.translate = props.translate
         this.step = props.step;
@@ -287,7 +297,7 @@ class ProblemCard extends React.Component {
         let prevCorrect = this.state.prevCorrect === undefined ? true : this.state.prevCorrect;
 
         if (this.showCorrectness) {
-            toastNotifyCorrectness(isCorrect, reason, this.translate, !prevCorrect);
+            toastNotifyCorrectness(isCorrect, reason, this.translate, SYSTEM_MODE === "enhanced" ? !prevCorrect : false);
         } else {
             toastNotifyCompletion(this.translate);
         }
@@ -748,7 +758,7 @@ class ProblemCard extends React.Component {
                                         onClick={this.toggleHints}
                                         title="View available hints"
                                         style={{
-                                            visibility: this.state.hintTimerDone ? "visible" : "hidden"
+                                            visibility: this.state.hintTimerDone && SYSTEM_MODE === "enhanced" ? "visible" : "hidden"
                                         }}
                                         disabled={
                                             !this.state.enableHintGeneration
