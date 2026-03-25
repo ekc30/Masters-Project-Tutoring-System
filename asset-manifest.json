@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/Masters-Project-Tutoring-System/static/css/main.5157c1e3.css",
-    "main.js": "/Masters-Project-Tutoring-System/static/js/main.337400d0.js",
-    "static/media/Symbola.svg": "/Masters-Project-Tutoring-System/static/media/Symbola.f647c9292a2da02d9ae8.svg",
-    "static/media/Symbola.eot": "/Masters-Project-Tutoring-System/static/media/Symbola.d25fbd520f6558203fb4.eot",
-    "static/media/Symbola.ttf": "/Masters-Project-Tutoring-System/static/media/Symbola.1ac5fa7f9b82ed4ce3f3.ttf",
-    "static/media/Symbola.woff": "/Masters-Project-Tutoring-System/static/media/Symbola.353fd9bde3c87711f5fc.woff",
-    "static/media/Symbola.woff2": "/Masters-Project-Tutoring-System/static/media/Symbola.080d8bb6a36e8bd8966b.woff2",
-    "index.html": "/Masters-Project-Tutoring-System/index.html",
-    "main.5157c1e3.css.map": "/Masters-Project-Tutoring-System/static/css/main.5157c1e3.css.map",
-    "main.337400d0.js.map": "/Masters-Project-Tutoring-System/static/js/main.337400d0.js.map"
+    "main.css": "/place-holder/static/css/main.c151d24f.css",
+    "main.js": "/place-holder/static/js/main.c295f82b.js",
+    "static/media/Symbola.svg": "/place-holder/static/media/Symbola.f647c9292a2da02d9ae8.svg",
+    "static/media/Symbola.eot": "/place-holder/static/media/Symbola.d25fbd520f6558203fb4.eot",
+    "static/media/Symbola.ttf": "/place-holder/static/media/Symbola.1ac5fa7f9b82ed4ce3f3.ttf",
+    "static/media/Symbola.woff": "/place-holder/static/media/Symbola.353fd9bde3c87711f5fc.woff",
+    "static/media/Symbola.woff2": "/place-holder/static/media/Symbola.080d8bb6a36e8bd8966b.woff2",
+    "index.html": "/place-holder/index.html",
+    "main.c151d24f.css.map": "/place-holder/static/css/main.c151d24f.css.map",
+    "main.c295f82b.js.map": "/place-holder/static/js/main.c295f82b.js.map"
   },
   "entrypoints": [
-    "static/css/main.5157c1e3.css",
-    "static/js/main.337400d0.js"
+    "static/css/main.c151d24f.css",
+    "static/js/main.c295f82b.js"
   ]
 }
