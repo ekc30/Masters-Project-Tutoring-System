@@ -40,6 +40,8 @@
         "correct": "Great work - your approach paid off!",
         "incorrect": "Not quite right - try revising your answer!",
         "recovery": "Nice persistence - your revision worked!",
+        "displayMastery": "You've successfully completed this assignment!",
+        "finished": "You have successfully completed this stage of the study. Thank you for taking part!",
         "simplify": "Please simplify!",
         "cantProcess": "Our system could not process that answer",
         "stepComplete": "Step Completed!",

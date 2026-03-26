@@ -89,6 +89,7 @@ class Platform extends React.Component {
         }
 
         this.selectLesson = this.selectLesson.bind(this);
+        this.translate = props.translate;
     }
 
     componentDidMount() {
@@ -445,7 +446,12 @@ class Platform extends React.Component {
             return null;
         } else if (chosenProblem == null) {
             console.debug("no problems were chosen");
-            // We have finished all the problems
+
+            // We have finished all the problems.
+            toast.success(this.translate("toast.finished"), {
+                autoClose: 30000
+            });
+
             if (this.lesson && !this.lesson.allowRecycle) {
                 // If we do not allow problem recycle then we have exhausted the pool
                 this.setState({ status: "exhausted" });
@@ -651,7 +657,7 @@ class Platform extends React.Component {
     displayMastery = (mastery) => {
         this.setState({ mastery: mastery });
         if (mastery >= MASTERY_THRESHOLD) {
-            toast.success("You've successfully completed this assignment!", {
+            toast.success(this.translate("toast.displayMastery"), {
                 toastId: ToastID.successfully_completed_lesson.toString(),
                 autoClose: 5000
             });
