@@ -374,7 +374,7 @@ class Platform extends React.Component {
         this.props.saveProgress();
         const problems = this.problemIndex.problems.filter(
             ({ courseName }) => !courseName.toString().startsWith("!!")
-        );
+        ).filter(x => x.lesson_set === LESSON_SET);
         let chosenProblem;
 
         console.debug(
@@ -420,7 +420,8 @@ class Platform extends React.Component {
             chosenProblem = problems.filter(p => p.id == this.lesson['id'])[0];
         } else {
             // chosenProblem = context.heuristic(problems, this.completedProbs);
-            chosenProblem = problems.find(p => !this.completedProbs.has(p.id));
+            let nextProblemIndex = problems.map(x => x.id).indexOf(this.state.currProblem.id);
+            chosenProblem = problems.at((nextProblemIndex + 1) % problems.length);
         }
         console.debug("Platform.js: chosen problem", chosenProblem);
 
