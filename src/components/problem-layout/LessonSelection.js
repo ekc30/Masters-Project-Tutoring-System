@@ -195,7 +195,7 @@ class LessonSelection extends React.Component {
                                 <Button className={classes.button} style={{ width: "100%" }} size="small"
                                     onClick={this.removeProgress}
                                     disabled={this.state.removedProgress}>{this.state.removedProgress ? translate('lessonSelection.reset') : translate('lessonSelection.aresure')}</Button> :
-                                <Button className={classes.button} style={{ width: "100%" }} size="small"
+                                <Button className={classes.button} style={{ width: "100%", color: "white" }} size="small"
                                     onClick={this.prepareRemoveProgress}
                                     disabled={this.state.preparedRemoveProgress}>{translate('lessonSelection.resetprogress')}</Button>}
                         </Grid>}

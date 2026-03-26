@@ -785,7 +785,7 @@ class ProblemCard extends React.Component {
                             <center>
                                 <Button
                                     className={classes.button}
-                                    style={{ width: "80%" }}
+                                    style={{ width: "80%", color: "white" }}
                                     size="small"
                                     onClick={this.submit}
                                     disabled={

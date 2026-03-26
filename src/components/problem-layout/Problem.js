@@ -563,7 +563,7 @@ class Problem extends React.Component {
                                     >
                                         <Button
                                             className={classes.button}
-                                            style={{ width: "100%" }}
+                                            style={{ width: "100%", color: "white" }}
                                             size="small"
                                             onClick={() =>
                                                 (this.context.needRefresh = true)
@@ -582,7 +582,7 @@ class Problem extends React.Component {
                                 <Grid item xs={6} sm={6} md={2} key={2}>
                                     <Button
                                         className={classes.button}
-                                        style={{ width: "100%" }}
+                                        style={{ width: "100%", color: "white" }}
                                         size="small"
                                         onClick={this.clickNextProblem}
                                         disabled={
