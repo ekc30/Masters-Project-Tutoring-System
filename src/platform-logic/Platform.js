@@ -425,7 +425,10 @@ class Platform extends React.Component {
         }
         console.debug("Platform.js: chosen problem", chosenProblem);
 
-        const objectives = Object.keys(this.lesson.learningObjectives);
+        let currentLessonId = chosenProblem.id;
+        let learningObjectives = findLessonById(currentLessonId).learningObjectives;
+
+        const objectives = Object.keys(learningObjectives);
         console.debug("Platform.js: objectives", objectives);
         let score = objectives.reduce((x, y) => {
             return x + context.bktParams[y].probMastery;

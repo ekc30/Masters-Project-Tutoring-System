@@ -21,6 +21,7 @@ import withTranslation from "../../util/withTranslation.js"
 
 import {
     CANVAS_WARNING_STORAGE_KEY,
+    findLessonById,
     MIDDLEWARE_URL,
     SHOW_NOT_CANVAS_WARNING,
     SITE_NAME,
@@ -279,12 +280,19 @@ class Problem extends React.Component {
         }
 
         if (!this.context.debug) {
-            const objectives = Object.keys(lesson.learningObjectives);
+
+            let learningObjectives = findLessonById(problem.id).learningObjectives;
+            const objectives = Object.keys(learningObjectives);
             objectives.unshift(0);
             let score = objectives.reduce((x, y) => {
                 return x + this.bktParams[y].probMastery;
             });
             score /= objectives.length - 1;
+
+            // Increase score gained if only 1 task.
+            if (problem.steps.length === 1) {
+                score *= 1.6;
+            }
             //console.log(this.context.studentName + " " + score);
             this.props.displayMastery(score);
 
