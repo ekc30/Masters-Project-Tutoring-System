@@ -447,11 +447,6 @@ class Platform extends React.Component {
         } else if (chosenProblem == null) {
             console.debug("no problems were chosen");
 
-            // We have finished all the problems.
-            toast.success(this.translate("toast.finished"), {
-                autoClose: 30000
-            });
-
             if (this.lesson && !this.lesson.allowRecycle) {
                 // If we do not allow problem recycle then we have exhausted the pool
                 this.setState({ status: "exhausted" });
@@ -467,6 +462,14 @@ class Platform extends React.Component {
                     this.completedProbs
                 );
             }
+        }
+
+
+        if (this.completedProbs.size === problems.length) {
+            // We have finished all the problems.
+            toast.success(this.translate("toast.finished"), {
+                autoClose: 30000
+            });
         }
 
         if (chosenProblem) {
