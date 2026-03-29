@@ -711,7 +711,7 @@ class Platform extends React.Component {
                                           " " +
                                           findLessonById(this.state.currProblem.id)
                                               .topics
-                                        : "null"}
+                                        : ""}
                                 </div>
                             </Grid>
                             <Grid item xs={3} key={3}>
