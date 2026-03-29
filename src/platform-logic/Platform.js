@@ -704,14 +704,14 @@ class Platform extends React.Component {
                                     }}
                                 >
                                     {Boolean(
-                                        findLessonById(this.props.lessonID)
+                                        findLessonById(this.state.currProblem?.id) !== undefined
                                     )
-                                        ? findLessonById(this.props.lessonID)
+                                        ? findLessonById(this.state.currProblem.id)
                                               .name +
                                           " " +
-                                          findLessonById(this.props.lessonID)
+                                          findLessonById(this.state.currProblem.id)
                                               .topics
-                                        : ""}
+                                        : "null"}
                                 </div>
                             </Grid>
                             <Grid item xs={3} key={3}>
