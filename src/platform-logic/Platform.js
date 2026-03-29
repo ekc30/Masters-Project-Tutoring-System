@@ -206,10 +206,7 @@ class Platform extends React.Component {
     getProgressBarData() {
         if (!this.lesson) return { completed: 0, total: 0, percent: 0 };
 
-        const lessonName = String(this.lesson.name.replace("Lesson ", "") + " " + this.lesson.topics);
-        const problems = this.problemIndex.problems.filter(
-            ({ lesson }) => String(lesson).includes(lessonName)
-        );
+        const problems = this.problemIndex.problems.filter(x => x.lesson.includes(this.lesson.id));
         const completed = this.completedProbs.size;
         const total = problems.length;
         const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
