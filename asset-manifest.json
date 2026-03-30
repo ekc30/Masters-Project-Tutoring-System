@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Masters-Project-Tutoring-System/static/css/main.5157c1e3.css",
-    "main.js": "/Masters-Project-Tutoring-System/static/js/main.edc96dcb.js",
+    "main.js": "/Masters-Project-Tutoring-System/static/js/main.7913d20e.js",
     "static/media/Symbola.svg": "/Masters-Project-Tutoring-System/static/media/Symbola.f647c9292a2da02d9ae8.svg",
     "static/media/Symbola.eot": "/Masters-Project-Tutoring-System/static/media/Symbola.d25fbd520f6558203fb4.eot",
     "static/media/Symbola.ttf": "/Masters-Project-Tutoring-System/static/media/Symbola.1ac5fa7f9b82ed4ce3f3.ttf",
@@ -9,10 +9,10 @@
     "static/media/Symbola.woff2": "/Masters-Project-Tutoring-System/static/media/Symbola.080d8bb6a36e8bd8966b.woff2",
     "index.html": "/Masters-Project-Tutoring-System/index.html",
     "main.5157c1e3.css.map": "/Masters-Project-Tutoring-System/static/css/main.5157c1e3.css.map",
-    "main.edc96dcb.js.map": "/Masters-Project-Tutoring-System/static/js/main.edc96dcb.js.map"
+    "main.7913d20e.js.map": "/Masters-Project-Tutoring-System/static/js/main.7913d20e.js.map"
   },
   "entrypoints": [
     "static/css/main.5157c1e3.css",
-    "static/js/main.edc96dcb.js"
+    "static/js/main.7913d20e.js"
   ]
 }
