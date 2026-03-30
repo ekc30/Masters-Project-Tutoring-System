@@ -52,8 +52,8 @@ class Problem extends React.Component {
         localStorage.setItem("mode", SYSTEM_MODE);
         localStorage.setItem("set", LESSON_SET);
 
-        console.log("System version: " + SYSTEM_MODE);
-        console.log("Lesson set: " + LESSON_SET);
+        // console.log("System version: " + SYSTEM_MODE);
+        // console.log("Lesson set: " + LESSON_SET);
 
         // const { setLanguage } = props;
         // if (props.lesson.courseName == "Matematik 4") {

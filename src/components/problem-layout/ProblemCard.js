@@ -50,8 +50,8 @@ class ProblemCard extends React.Component {
         localStorage.setItem("mode", SYSTEM_MODE);
         localStorage.setItem("set", LESSON_SET);
 
-        console.log("System version: " + SYSTEM_MODE);
-        console.log("Lesson set: " + LESSON_SET);
+        // console.log("System version: " + SYSTEM_MODE);
+        // console.log("Lesson set: " + LESSON_SET);
 
         this.translate = props.translate
         this.step = props.step;

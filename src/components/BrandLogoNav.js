@@ -30,12 +30,12 @@ function BrandLogoNav({ isPrivileged = false, noLink = false }) {
         {/* specified to not link or was launched from lms as student*/}
         {noLink || (context.jwt.length !== 0 && !isPrivileged)
             ? <div style={{ textAlign: 'left', paddingTop: 6 }}>
-                {brandString}
+                <img src={process.env.PUBLIC_URL + "/static/images/icons/home.png"} alt="homeIcon" style={{ width: "45px", height: "30px" }}/>
             </div>
             :
             <div role={"link"} tabIndex={0} onClick={navigateLink} onKeyDown={navigateLink}
                  className={classes.siteNavLink}>
-                {brandString}
+                <img src={process.env.PUBLIC_URL + "/static/images/icons/home.png"} alt="homeIcon" style={{ width: "45px", height: "30px" }}/>
             </div>
         }
     </>
